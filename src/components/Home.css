@@ -1,0 +1,21 @@
+.homeDisplay {
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%; 
+    object-fit: fill;
+    background-color: #333333;
+}
+
+.homeVideo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: auto;
+    height: auto;
+    min-width: 100%; 
+    min-height: 100%; 
+}
