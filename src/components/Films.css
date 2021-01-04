@@ -1,0 +1,28 @@
+.filmsNavbar {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: 100%;
+    background-color: #F7F9FB;
+}
+
+.filmsNavItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 32px 0px;
+}
+
+.filmsNavLogo {
+    font-size: 48px;
+    text-decoration: none;
+    list-style-type: none;
+    color: #333333;
+}
+
+.filmsNavItem {
+    text-decoration: none;
+    list-style-type: none;
+    color: #333333;
+}

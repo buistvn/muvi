@@ -3,7 +3,6 @@ import {
     BrowserRouter,
     Switch,
     Route,
-    Link,
     Redirect
 } from 'react-router-dom';
 import './App.css';
@@ -14,26 +13,18 @@ function App() {
     return (
         <BrowserRouter>
             <div id="app">
-                <div className="navbar">
-                    <div className="navItems">
-                        <Link to="/home" className="navLogo">MUVI</Link>
-                        <Link to="/films" className="navItem">Popular Films</Link>
-                    </div>
-                </div>
                 <div className="content">
                     <Switch>
                         <Route exact path="/">
-                            <Redirect to="/home" />
+                            <Redirect to="/mubi" />
                         </Route>
-                        <Route exact path="/home">
+                        <Route exact path="/mubi">
                             <Home />
                         </Route>
-                        <Route exact path="/films">
+                        <Route exact path="/mubi/films">
                             <Films />
                         </Route>
                     </Switch>
-                </div>
-                <div className="footer">
                 </div>
             </div>
         </BrowserRouter>

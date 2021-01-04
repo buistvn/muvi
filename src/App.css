@@ -8,32 +8,3 @@ body, div, h1, h2, h3, h4, h5, h6, p {
     padding: 0px;
     border: 0px;
 }
-
-.navbar {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-}
-
-.navItems {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin: 32px 0px 32px 0px;
-}
-
-.navLogo {
-    font-size: 48px;
-    text-decoration: none;
-    list-style-type: none;
-    color: #F7F9FB;
-}
-
-.navItem {
-    text-decoration: none;
-    list-style-type: none;
-    color: #F7F9FB;
-}

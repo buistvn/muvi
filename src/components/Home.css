@@ -1,3 +1,32 @@
+.homeNavbar {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+.homeNavItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 32px 0px;
+}
+
+.homeNavLogo {
+    font-size: 48px;
+    text-decoration: none;
+    list-style-type: none;
+    color: #F7F9FB;
+}
+
+.homeNavItem {
+    text-decoration: none;
+    list-style-type: none;
+    color: #F7F9FB;
+}
+
 .homeDisplay {
     overflow: hidden;
     position: absolute;
