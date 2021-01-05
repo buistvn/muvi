@@ -8,8 +8,8 @@ function Home() {
         <div className="homeSection">
             <div className="homeNavbar">
                 <div className="homeNavItems">
-                    <Link to="/mubi" className="homeNavLogo">MUVI</Link>
-                    <Link to="/mubi/films" className="homeNavItem">Films</Link>
+                    <Link to="/" className="homeNavLogo">MUVI</Link>
+                    <Link to="/films" className="homeNavItem">Films</Link>
                 </div>
             </div>
             <div className="homeContent">

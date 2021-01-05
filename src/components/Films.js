@@ -7,11 +7,10 @@ function Films() {
         <div className="filmsSection">
             <div className="filmsNavbar">
                 <div className="filmsNavItems">
-                    <Link to="/mubi" className="filmsNavLogo">MUVI</Link>
-                    <Link to="/mubi/films" className="filmsNavItem">Films</Link>
+                    <Link to="/" className="filmsNavLogo">MUVI</Link>
+                    <Link to="/films" className="filmsNavItem">Films</Link>
                 </div>
             </div>
-            <p>films</p>
         </div>
     );
 }

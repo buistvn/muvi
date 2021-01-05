@@ -1,9 +1,8 @@
 import React from 'react';
 import {
-    BrowserRouter,
+    HashRouter,
     Switch,
     Route,
-    Redirect
 } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
@@ -11,23 +10,20 @@ import Films from './components/Films';
 
 function App() {
     return (
-        <BrowserRouter>
+        <HashRouter basename="/">
             <div id="app">
                 <div className="content">
                     <Switch>
                         <Route exact path="/">
-                            <Redirect to="/mubi" />
-                        </Route>
-                        <Route exact path="/mubi">
                             <Home />
                         </Route>
-                        <Route exact path="/mubi/films">
+                        <Route path="/films">
                             <Films />
                         </Route>
                     </Switch>
                 </div>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
