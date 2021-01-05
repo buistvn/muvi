@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/muvi/static/css/main.e6585b50.chunk.css",
-    "main.js": "/muvi/static/js/main.f260d835.chunk.js",
-    "main.js.map": "/muvi/static/js/main.f260d835.chunk.js.map",
+    "main.js": "/muvi/static/js/main.1c6bdc18.chunk.js",
+    "main.js.map": "/muvi/static/js/main.1c6bdc18.chunk.js.map",
     "runtime-main.js": "/muvi/static/js/runtime-main.bb52d28c.js",
     "runtime-main.js.map": "/muvi/static/js/runtime-main.bb52d28c.js.map",
-    "static/js/2.11df09b0.chunk.js": "/muvi/static/js/2.11df09b0.chunk.js",
-    "static/js/2.11df09b0.chunk.js.map": "/muvi/static/js/2.11df09b0.chunk.js.map",
+    "static/js/2.acc82f45.chunk.js": "/muvi/static/js/2.acc82f45.chunk.js",
+    "static/js/2.acc82f45.chunk.js.map": "/muvi/static/js/2.acc82f45.chunk.js.map",
     "index.html": "/muvi/index.html",
     "static/css/main.e6585b50.chunk.css.map": "/muvi/static/css/main.e6585b50.chunk.css.map",
-    "static/js/2.11df09b0.chunk.js.LICENSE.txt": "/muvi/static/js/2.11df09b0.chunk.js.LICENSE.txt",
+    "static/js/2.acc82f45.chunk.js.LICENSE.txt": "/muvi/static/js/2.acc82f45.chunk.js.LICENSE.txt",
     "static/media/YiYi.cd7089dc.mp4": "/muvi/static/media/YiYi.cd7089dc.mp4"
   },
   "entrypoints": [
     "static/js/runtime-main.bb52d28c.js",
-    "static/js/2.11df09b0.chunk.js",
+    "static/js/2.acc82f45.chunk.js",
     "static/css/main.e6585b50.chunk.css",
-    "static/js/main.f260d835.chunk.js"
+    "static/js/main.1c6bdc18.chunk.js"
   ]
 }
