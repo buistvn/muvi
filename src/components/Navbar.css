@@ -1,0 +1,89 @@
+.navbarContainer {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+}
+
+.navbarContainerAlt {
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+    width: 100%;
+    background-color: #F7F9FB;
+}
+
+.navbarItems {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 36px 0px;
+}
+
+.navbarLogo {
+    font-size: 48px;
+    text-decoration: none;
+    list-style-type: none;
+    color: #F7F9FB;
+}
+
+.navbarLogoAlt {
+    font-size: 48px;
+    text-decoration: none;
+    list-style-type: none;
+    color: #333333;
+}
+
+.navbarRight {
+    display: flex;
+    align-items: center;
+}
+
+.navbarItem {
+    font-size: 16px;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0px 16px;
+    color: #F7F9FB;
+}
+
+.navbarItemAlt {
+    font-size: 16px;
+    text-decoration: none;
+    list-style-type: none;
+    margin: 0px 16px;
+    color: #333333;
+}
+
+.navbarSearch {
+    margin-left: 16px;
+    border: 1px solid #333333;
+    border-radius: 24px;
+    background-color: #FFFFFF;
+}
+
+.navbarSearch:hover {
+    border: 1px solid #5CDB95;
+    transition-duration: 0.25s;
+}
+
+.navbarInput {
+    padding: 12px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.navbarButton {
+    padding: 12px;
+    border: none;
+    outline: none;
+    color: #333333;
+    background-color: transparent;
+}
+
+.navbarButton:hover {
+    cursor: pointer;
+}

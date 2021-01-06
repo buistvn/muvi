@@ -1,19 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import './Home.css';
-import YiYi from './YiYi.mp4';
+import YiYi from '../YiYi.mp4';
 
 function Home() {
     return (
         <div className="homeSection">
-            <div className="homeNavbar">
-                <div className="homeNavItems">
-                    <Link to="/" className="homeNavLogo">MUVI</Link>
-                    <Link to="/films" className="homeNavItem">Films</Link>
-                </div>
-            </div>
             <div className="homeContent">
-                <div className="homeDisplay">
+                <div className="homeScreen">
                     <video className='homeVideo' autoPlay loop muted>
                         <source src={YiYi} type='video/mp4' />
                     </video>
