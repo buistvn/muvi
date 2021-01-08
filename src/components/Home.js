@@ -1,14 +1,16 @@
 import React from 'react';
 import './Home.css';
-import YiYi from '../YiYi.mp4';
+import Clip from '../YiYi.mp4';
+import { Navbar } from './Navbar';
 
 function Home() {
     return (
         <div className="homeSection">
+            <Navbar/>
             <div className="homeContent">
-                <div className="homeScreen">
+                <div className="homeMedia">
                     <video className='homeVideo' autoPlay loop muted>
-                        <source src={YiYi} type='video/mp4' />
+                        <source src={Clip} type='video/mp4'/>
                     </video>
                 </div>
             </div>

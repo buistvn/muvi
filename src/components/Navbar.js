@@ -1,51 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar() {
-    const [navbarContainer, setNavbarContainer] = useState(false);
-    const [navbarLogo, setNavbarLogo] = useState(false);
-    const [navbarItem, setNavbarItem] = useState(false);
-    
-    const setPageType = (pageType) => {
-        switch (pageType) {
-            case "home":
-                setNavbarContainer(false);
-                setNavbarLogo(false);
-                setNavbarItem(false);
-                break;
-            case "films":
-                setNavbarContainer(true);
-                setNavbarLogo(true);
-                setNavbarItem(true);
-                break;
-            case "search":
-                setNavbarContainer(true);
-                setNavbarLogo(true);
-                setNavbarItem(true);
-                break;
-            default:
-                setNavbarContainer(false);
-                setNavbarLogo(false);
-                setNavbarItem(false);
-                break;
-        }
-    }
-
+function Navbar({showPopularFilms}) {
     return (
-        <div className={navbarContainer ? "navbarContainerAlt" : "navbarContainer"}>
+        <div className="navbarContainer">
             <div className="navbarItems">
-                <Link to="/" className={navbarLogo ? "navbarLogoAlt" : "navbarLogo"} onClick={() => setPageType("home")}>MUVI</Link>
-                <div className="navbarRight">
-                    <Link to="/films" className={navbarItem ? "navbarItemAlt" : "navbarItem"} onClick={() => setPageType("films")}>Films</Link>
-                    <div className="navbarSearch">
-                        <input type="text" className="navbarInput"></input>
-                        <button type="button" className="navbarButton"><i className="fas fa-search"></i></button>
-                    </div>
+                <div className="navbarLeft">
+                    <Link to="/" className="navbarLogo" replace>MUVI</Link>
+                    <Link to="/films" className="navbarItem" onClick={showPopularFilms} replace>Films</Link>
                 </div>
             </div>
         </div>
     );
 }
 
-export default Navbar;
+function NavbarAlt({showPopularFilms, getUserInput}) {
+    return (
+        <div className="navbarContainerAlt">
+            <div className="navbarItems">
+                <div className="navbarLeft">
+                    <Link to="/" className="navbarLogoAlt" replace>MUVI</Link>
+                    <Link to="/films" className="navbarItemAlt" onClick={showPopularFilms} replace>Films</Link>
+                </div>
+                <div className="navbarSearch">
+                    <input type="text" className="navbarInput" onKeyPress={getUserInput}></input>
+                    <button type="button" className="navbarButton"><i className="fas fa-search" onClick={getUserInput}></i></button>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export { Navbar, NavbarAlt };

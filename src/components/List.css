@@ -1,0 +1,14 @@
+.listContainer {
+    width: 80%;
+}
+
+.listHeader {
+    margin: 36px 0px;
+}
+
+.listCards {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px 200px;
+    row-gap: 48px;
+    justify-content: space-between;
+}
