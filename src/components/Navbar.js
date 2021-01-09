@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-function Navbar({showPopularFilms}) {
+function Navbar() {
     return (
         <div className="navbarContainer">
             <div className="navbarItems">
                 <div className="navbarLeft">
                     <Link to="/" className="navbarLogo" replace>MUVI</Link>
-                    <Link to="/films" className="navbarItem" onClick={showPopularFilms} replace>Films</Link>
+                    <Link to="/films" className="navbarItem" replace>Films</Link>
                 </div>
             </div>
         </div>
     );
 }
 
-function NavbarAlt({showPopularFilms, getUserInput}) {
+function NavbarAlt({showPopularFilms, showSearchedFilms}) {
     return (
         <div className="navbarContainerAlt">
             <div className="navbarItems">
@@ -24,8 +24,8 @@ function NavbarAlt({showPopularFilms, getUserInput}) {
                     <Link to="/films" className="navbarItemAlt" onClick={showPopularFilms} replace>Films</Link>
                 </div>
                 <div className="navbarSearch">
-                    <input type="text" className="navbarInput" onKeyPress={getUserInput}></input>
-                    <button type="button" className="navbarButton"><i className="fas fa-search" onClick={getUserInput}></i></button>
+                    <input type="text" className="navbarInput" onKeyPress={showSearchedFilms}></input>
+                    <button type="button" className="navbarButton"><i className="fas fa-search"></i></button>
                 </div>
             </div>
         </div>

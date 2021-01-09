@@ -1,16 +1,19 @@
 import React from 'react';
 import './Card.css';
+import Placeholder from '../media/Placeholder.png';
 
-function Card({result, id}) {
+function Card({showDetails, result}) {
+    var cardPoster = result.poster_path ? `https://image.tmdb.org/t/p/w200${result.poster_path}` : Placeholder;
+    var cardReleaseDate = result.release_date ? result.release_date.split("-")[0] : result.release_date;
+
     return (
         <div className="cardContainer" id={result.id}>
             <div className="cardMedia">
-                <img src={`https://image.tmdb.org/t/p/w200${result.poster_path}`} className="cardPoster" alt="placeholder"></img>
+                <img src={cardPoster} className="cardPoster" alt="Placeholder" onClick={showDetails}></img>
             </div>
             <div className="cardText">
-                <p className="cardTitle">{result.title}</p>
-                <p className="cardReleaseDate">{result.release_date.split("-")[0]}</p>
-                <p className="cardRating">{result.vote_average}</p>
+                <p className="cardTitle" onClick={showDetails}>{result.title}</p>
+                <p className="cardReleaseDate">{cardReleaseDate}</p>
             </div>
         </div>
     );
