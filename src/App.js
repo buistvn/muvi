@@ -7,8 +7,9 @@ import {
 import './App.css';
 import Home from './components/Home';
 import Films from './components/Films';
+import View from './components/View';
 
-require('dotenv').config()
+require('dotenv').config();
 
 function App() {
     return (
@@ -18,9 +19,14 @@ function App() {
                     <Route exact path="/">
                         <Home/>
                     </Route>
-                    <Route path="/films">
+                    <Route exact path="/films">
                         <Films/>
                     </Route>
+                    {/*
+                    <Route path="/films/:filmID">
+                        <View/>
+                    </Route>
+                    */}
                 </Switch>
             </div>
         </HashRouter>

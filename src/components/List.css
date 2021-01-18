@@ -1,5 +1,5 @@
 .listContainer {
-    width: 80%;
+    width: 75%;
 }
 
 .listHeader {
@@ -9,6 +9,6 @@
 .listCards {
     display: grid;
     grid-template-columns: 200px 200px 200px 200px 200px;
-    row-gap: 48px;
+    row-gap: 36px;
     justify-content: space-between;
 }

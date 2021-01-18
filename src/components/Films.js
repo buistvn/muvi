@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './Films.css';
 import { NavbarAlt } from './Navbar';
 import List from './List';
 
 function Films() {
-    const API_KEY = process.env.TMDB_API_KEY;
+    const API_KEY = process.env.REACT_APP_API_KEY;
     
     const [film, setFilm] = useState({
         results: [],
         page: "",
         details: ""
     })
+
+    const history = useHistory();
 
     const showPopularFilms = (e) => {
         axios(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`)
@@ -51,7 +54,7 @@ function Films() {
                 axios(`https://api.themoviedb.org/3/movie/${filmID}?api_key=${API_KEY}&language=en-US`)
                     .then((response) => {
                         var details = response.data;
-                        console.log(details);
+                        //console.log(details);
                         setFilm((prevState) => {
                             return {...prevState, details: details};
                         });
@@ -60,6 +63,7 @@ function Films() {
                         console.log(err);
                     });
             }
+            //history.push(`/films/${filmID}`);
         }
     }
 
