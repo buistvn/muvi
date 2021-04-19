@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import Clip from '../media/YiYi.mp4';
+import Clip from '../media/Mirror.mp4';
 import { Navbar } from './Navbar';
 
 function Home() {

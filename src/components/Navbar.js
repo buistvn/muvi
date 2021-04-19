@@ -25,7 +25,7 @@ function NavbarAlt({showPopularFilms, showSearchedFilms}) {
                 </div>
                 <div className="navbarSearch">
                     <input type="text" className="navbarInput" onKeyPress={showSearchedFilms}></input>
-                    <button type="button" className="navbarButton"><i className="fas fa-search"></i></button>
+                    <span className="navbarButton"><i className="fas fa-search"></i></span>
                 </div>
             </div>
         </div>
