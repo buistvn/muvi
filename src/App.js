@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ChakraProvider, theme } from '@chakra-ui/react';
 
+import Navbar from './components/Navbar';
 import Favorites from './pages/Favorites';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -13,6 +14,7 @@ const App = () => {
     return (
         <ChakraProvider theme={theme}>
             <BrowserRouter>
+                <Navbar />
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/home" element={<Home />} />
