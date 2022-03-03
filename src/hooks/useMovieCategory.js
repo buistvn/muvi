@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useMovieCategory = (page, filter) => {
+const useMovieCategory = (page, category) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ const useMovieCategory = (page, filter) => {
 
             try {
                 const response = await fetch(
-                    `https://api.themoviedb.org/3/movie/${filter}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`,
+                    `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`,
                     { signal: controller.signal }
                 );
                 responseData = await response.json();
@@ -32,7 +32,7 @@ const useMovieCategory = (page, filter) => {
             }
         };
 
-        if (page && filter) {
+        if (page && category) {
             fetchMovies();
         }
 
@@ -40,7 +40,7 @@ const useMovieCategory = (page, filter) => {
             controller.abort();
             ignore = true;
         };
-    }, [page, filter]);
+    }, [page, category]);
 
     return [movies, loading];
 };
