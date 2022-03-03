@@ -11,6 +11,7 @@ import { RiMovie2Line } from 'react-icons/ri';
 
 import ColorModeSwitcher from './ColorModeSwitcher';
 import Searchbar from './Searchbar';
+import LoginLink from './LoginLink';
 
 const Navbar = () => {
     const borderColor = useColorModeValue('gray.100', 'gray.900');
@@ -25,6 +26,7 @@ const Navbar = () => {
                     </Flex>
                 </Link>
                 <Flex align="center" columnGap="16px">
+                    <LoginLink />
                     <Link href="/movies">
                         <Button variant="ghost">Movies</Button>
                     </Link>
