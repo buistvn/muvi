@@ -5,10 +5,10 @@ import React, { useState, useEffect } from 'react';
 
 export default function LoginLink() {
     const [ requestToken, setRequestToken ] = useState("");
-    //console.log("hi", process.env.API_KEY) - .env.local not working correctly?
+    
     useEffect(() => {
         async function fetchData() {
-            const res = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.API_KEY}`);
+            const res = await fetch(`https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`);
             if (res.status === 401) {
                 console.log("== Error: No Token");
             } else {
