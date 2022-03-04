@@ -5,7 +5,11 @@ import MovieCard from './MovieCard';
 
 const MovieList = ({ movies }) => {
     return (
-        <Grid>
+        <Grid
+            templateColumns="19% 19% 19% 19% 19%"
+            gap="12px"
+            justifyContent="space-between"
+        >
             {movies.map((movie) => (
                 <MovieCard movie={movie} key={movie.id} />
             ))}

@@ -18,8 +18,8 @@ const Movies = () => {
 
     return (
         <Flex justify="center" my="32px">
-            <Flex flexDir="column" rowGap="32px" w="80%">
-                <Flex justify="space-between">
+            <Flex flexDir="column" rowGap="32px" w="75%">
+                <Flex justify="space-between" align="center">
                     {category === categories.NOW_PLAYING && (
                         <Heading>Now Playing</Heading>
                     )}
