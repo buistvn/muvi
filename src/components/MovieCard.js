@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Flex, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, Image, Text } from '@chakra-ui/react';
 
 const MovieCard = ({ movie }) => {
     const [hover, setHover] = useState(false);
 
     const title = movie.title;
     const year = movie.release_date.split('-')[0];
-    const poster = `https://image.tmdb.org/t/p/w300/${movie.poster_path}`;
+    const poster = movie.poster_path
+        ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
+        : null;
 
     return (
         <Flex
@@ -15,14 +17,25 @@ const MovieCard = ({ movie }) => {
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <Image
-                src={poster}
-                alt={title}
-                h="100%"
-                borderRadius="8px"
-                style={hover ? { filter: 'brightness(25%)' } : null}
-            />
-            {hover && (
+            {poster ? (
+                <Image
+                    src={poster}
+                    alt={title}
+                    h="100%"
+                    borderRadius="8px"
+                    style={hover ? { filter: 'brightness(25%)' } : null}
+                />
+            ) : (
+                <Box
+                    w="100%"
+                    h="100%"
+                    border="1px"
+                    borderColor="gray.700"
+                    borderRadius="8px"
+                    background="gray.900"
+                />
+            )}
+            {(hover || !poster) && (
                 <Flex flexDir="column" pos="absolute" bottom="0%" p="16px">
                     <Text color="white" fontWeight="700" fontSize="20px">
                         {title}
