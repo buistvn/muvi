@@ -2,7 +2,12 @@ import React from 'react';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { FaChartLine, FaChevronDown, FaPlay, FaStar } from 'react-icons/fa';
 
-const CategoryMenu = ({ categories, setCategory }) => {
+const CategoryMenu = ({ categories, setCategory, setPage }) => {
+    const handleClick = (newCategory) => {
+        setCategory(newCategory);
+        setPage(1);
+    };
+
     return (
         <Menu>
             <MenuButton as={Button} rightIcon={<FaChevronDown />}>
@@ -11,19 +16,19 @@ const CategoryMenu = ({ categories, setCategory }) => {
             <MenuList>
                 <MenuItem
                     icon={<FaPlay />}
-                    onClick={() => setCategory(categories.NOW_PLAYING)}
+                    onClick={() => handleClick(categories.NOW_PLAYING)}
                 >
                     Now Playing
                 </MenuItem>
                 <MenuItem
                     icon={<FaChartLine />}
-                    onClick={() => setCategory(categories.POPULAR)}
+                    onClick={() => handleClick(categories.POPULAR)}
                 >
                     Popular
                 </MenuItem>
                 <MenuItem
                     icon={<FaStar />}
-                    onClick={() => setCategory(categories.TOP_RATED)}
+                    onClick={() => handleClick(categories.TOP_RATED)}
                 >
                     Top Rated
                 </MenuItem>

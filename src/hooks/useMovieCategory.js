@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
-const useMovieCategory = (page, category) => {
+const useMovieCategory = (category, page) => {
     const [movies, setMovies] = useState([]);
+    const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -28,11 +29,12 @@ const useMovieCategory = (page, category) => {
 
             if (!ignore) {
                 setMovies(responseData.results || []);
+                setTotalPages(responseData.total_pages);
                 setLoading(false);
             }
         };
 
-        if (page && category) {
+        if (category && page) {
             fetchMovies();
         }
 
@@ -40,9 +42,9 @@ const useMovieCategory = (page, category) => {
             controller.abort();
             ignore = true;
         };
-    }, [page, category]);
+    }, [category, page]);
 
-    return [movies, loading];
+    return [movies, totalPages, loading];
 };
 
 export default useMovieCategory;
