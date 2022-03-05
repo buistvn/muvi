@@ -14,11 +14,11 @@ import Searchbar from './Searchbar';
 import LoginLink from './LoginLink';
 
 const Navbar = () => {
-    const borderColor = useColorModeValue('gray.100', 'gray.900');
+    const borderColor = useColorModeValue('gray.200', 'gray.700');
 
     return (
         <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
-            <Flex justify="space-between" w="80%" py="16px">
+            <Flex justify="space-between" w="75%" py="16px">
                 <Link href="/">
                     <Flex align="center" _hover={{ cursor: 'pointer' }}>
                         <Icon as={RiMovie2Line} w="36px" h="36px" />
