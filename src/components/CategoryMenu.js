@@ -15,12 +15,6 @@ const CategoryMenu = ({ categories, setCategory, setPage }) => {
             </MenuButton>
             <MenuList>
                 <MenuItem
-                    icon={<FaPlay />}
-                    onClick={() => handleClick(categories.NOW_PLAYING)}
-                >
-                    Now Playing
-                </MenuItem>
-                <MenuItem
                     icon={<FaChartLine />}
                     onClick={() => handleClick(categories.POPULAR)}
                 >
@@ -31,6 +25,12 @@ const CategoryMenu = ({ categories, setCategory, setPage }) => {
                     onClick={() => handleClick(categories.TOP_RATED)}
                 >
                     Top Rated
+                </MenuItem>
+                <MenuItem
+                    icon={<FaPlay />}
+                    onClick={() => handleClick(categories.NOW_PLAYING)}
+                >
+                    Now Playing
                 </MenuItem>
             </MenuList>
         </Menu>
