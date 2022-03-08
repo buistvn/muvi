@@ -11,12 +11,14 @@ const Movie = () => {
     const [details, loading] = useMovieDetails(movieId);
 
     return (
-        <Flex justify="center">
-            {!loading && details ? (
-                <MovieDetails details={details} />
-            ) : (
-                <Spinner size="xl" />
-            )}
+        <Flex justify="center" my="32px">
+            <Flex justify="center" w="75%">
+                {!loading && details ? (
+                    <MovieDetails details={details} />
+                ) : (
+                    <Spinner size="xl" />
+                )}
+            </Flex>
         </Flex>
     );
 };
