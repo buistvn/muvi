@@ -1,21 +1,20 @@
 import { useEffect, useState } from 'react';
 
-const useMovieCategory = (category, page) => {
-    const [movies, setMovies] = useState([]);
-    const [totalPages, setTotalPages] = useState(0);
+const useMovieDetails = (movieId) => {
+    const [details, setDetails] = useState();
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         let ignore = false;
         const controller = new AbortController();
 
-        const fetchMovies = async () => {
+        const fetchDetails = async () => {
             let resBody = {};
             setLoading(true);
 
             try {
                 const res = await fetch(
-                    `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`,
+                    `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`,
                     { signal: controller.signal }
                 );
                 resBody = await res.json();
@@ -28,23 +27,22 @@ const useMovieCategory = (category, page) => {
             }
 
             if (!ignore) {
-                setMovies(resBody.results || []);
-                setTotalPages(resBody.total_pages);
+                setDetails(resBody);
                 setLoading(false);
             }
         };
 
-        if (category && page) {
-            fetchMovies();
+        if (movieId) {
+            fetchDetails();
         }
 
         return () => {
             controller.abort();
             ignore = true;
         };
-    }, [category, page]);
+    }, [movieId]);
 
-    return [movies, totalPages, loading];
+    return [details, loading];
 };
 
-export default useMovieCategory;
+export default useMovieDetails;
