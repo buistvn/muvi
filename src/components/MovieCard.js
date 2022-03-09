@@ -6,7 +6,7 @@ const MovieCard = ({ movie }) => {
     const [hover, setHover] = useState(false);
 
     const title = movie.title;
-    const year = movie.release_date.split('-')[0];
+    const year = movie.release_date ? movie.release_date.split('-')[0] : null;
     const poster = movie.poster_path
         ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
         : null;
