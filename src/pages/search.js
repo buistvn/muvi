@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Divider, Flex, Heading, Spinner } from '@chakra-ui/react';
+import { Divider, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 
 import MovieList from '../components/MovieList';
 import Pagination from '../components/Pagination';
@@ -22,14 +22,24 @@ const Search = () => {
                 <Heading>Results for "{query}"</Heading>
                 {!loading ? (
                     <>
-                        <MovieList movies={movies} />
-                        <Divider />
-                        {totalPages > 1 && (
-                            <Pagination
-                                page={page}
-                                setPage={setPage}
-                                totalPages={totalPages}
-                            />
+                        {movies && !!movies.length ? (
+                            <>
+                                <MovieList movies={movies} />
+                                {totalPages > 1 && (
+                                    <>
+                                        <Divider />
+                                        <Pagination
+                                            page={page}
+                                            setPage={setPage}
+                                            totalPages={totalPages}
+                                        />
+                                    </>
+                                )}
+                            </>
+                        ) : (
+                            <Text>
+                                There were no matches found for your search.
+                            </Text>
                         )}
                     </>
                 ) : (
