@@ -39,13 +39,15 @@ const Movies = () => {
                 {!loading ? (
                     <>
                         <MovieList movies={movies} />
-                        <Divider />
                         {totalPages > 1 && (
-                            <Pagination
-                                page={page}
-                                setPage={setPage}
-                                totalPages={totalPages}
-                            />
+                            <>
+                                <Divider />
+                                <Pagination
+                                    page={page}
+                                    setPage={setPage}
+                                    totalPages={totalPages}
+                                />
+                            </>
                         )}
                     </>
                 ) : (

@@ -19,7 +19,9 @@ const MovieDetails = ({ details }) => {
     const altTextColor = useColorModeValue('gray.400', 'gray.500');
 
     const title = details.title;
-    const year = details.release_date.split('-')[0] || null;
+    const year = details.release_date
+        ? details.release_date.split('-')[0]
+        : null;
     const runtime = details.runtime || null;
     const rating = details.vote_average || null;
     const synopsis = details.overview || null;
