@@ -3,16 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../_app';
 
 const True = () => {
-    const {
-        user,
-        setUser,
-        sessionID,
-        setSessionID,
-        accountID,
-        setAccountID,
-        name,
-        setName,
-    } = useContext(UserContext);
+    const { sessionID, setAccountID, name, setName } = useContext(UserContext);
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(

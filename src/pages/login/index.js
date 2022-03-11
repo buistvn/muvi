@@ -6,16 +6,7 @@ import { UserContext } from '../_app';
 const Login = () => {
     const router = useRouter();
     const queryString = require('query-string');
-    const {
-        user,
-        setUser,
-        sessionID,
-        setSessionID,
-        accountID,
-        setAccountID,
-        name,
-        setName,
-    } = useContext(UserContext);
+    const { setUser, setSessionID } = useContext(UserContext);
 
     useEffect(() => {
         const parsed = queryString.parse(location.search);
