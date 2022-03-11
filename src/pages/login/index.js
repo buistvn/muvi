@@ -1,0 +1,41 @@
+import React, { useState, useEffect } from 'react';
+import { Text } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+
+import setSession from '../../hooks/useSessionInfo';
+
+const Login = () => {
+    const router = useRouter();
+    const queryString = require('query-string');
+    
+    useEffect(() => {
+        const parsed = queryString.parse(location.search);
+        console.log(parsed)
+        async function fetchSession() {
+            const res = await fetch(`https://api.themoviedb.org/3/authentication/session/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    request_token: parsed.request_token
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (res.status === 401) {
+                console.log("== Error: No Session ID");
+            } else {
+                const body = await res.json();
+                console.log("Recieved SessionID", body.session_id);
+                // pass session id and user info somehow
+                router.push(`/login/${body.success}`);
+            }
+        }
+        if (parsed.approved == 'true') fetchSession();
+    }, []);
+
+    return (
+        <Text>Error</Text>
+    );
+};
+
+export default Login;
