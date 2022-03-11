@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import {
     Button,
@@ -12,9 +12,11 @@ import { RiMovie2Line } from 'react-icons/ri';
 import ColorModeSwitcher from './ColorModeSwitcher';
 import Searchbar from './Searchbar';
 import LoginLink from './LoginLink';
+import { UserContext } from '../pages/_app';
 
 const Navbar = () => {
     const borderColor = useColorModeValue('gray.200', 'gray.700');
+    const { user } = useContext(UserContext);
 
     return (
         <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
@@ -30,12 +32,16 @@ const Navbar = () => {
                     <Link href="/movies">
                         <Button variant="ghost">Movies</Button>
                     </Link>
-                    <Link href="/favorites">
-                        <Button variant="ghost">Favorites</Button>
-                    </Link>
-                    <Link href="/watchlist">
-                        <Button variant="ghost">Watchlist</Button>
-                    </Link>
+                    {user && (
+                        <>
+                            <Link href="/favorites">
+                                <Button variant="ghost">Favorites</Button>
+                            </Link>
+                            <Link href="/watchlist">
+                                <Button variant="ghost">Watchlist</Button>
+                            </Link>
+                        </>
+                    )}
                     <Searchbar />
                     <ColorModeSwitcher />
                 </Flex>
