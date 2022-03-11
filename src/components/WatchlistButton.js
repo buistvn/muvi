@@ -1,18 +1,41 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Button } from '@chakra-ui/react';
 import { FaListAlt, FaRegListAlt } from 'react-icons/fa';
+import { UserContext } from '../pages/_app';
 
-const WatchlistButton = () => {
-    // TODO: Fetch "added" state from API instead after user is implemented
-    const [addedToList, setAddedToList] = useState(false);
+const WatchlistButton = ({ state, id, update, setUpdate }) => {
+    const { accountID, sessionID } = useContext(UserContext);
 
     const handleClick = () => {
-        setAddedToList(!addedToList);
+        async function addToList() {
+            const res = await fetch(
+                `https://api.themoviedb.org/3/account/${accountID}/watchlist?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionID}`,
+                {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        media_type: 'movie',
+                        media_id: id,
+                        watchlist: !state,
+                    }),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+            if (res.status === 401) {
+                console.log('== Error: No Session ID');
+            } else {
+                const body = await res.json();
+                setUpdate(!update);
+                console.log('Status:', body.status_message);
+            }
+        }
+        addToList();
     };
 
     return (
         <>
-            {!addedToList ? (
+            {!state ? (
                 <Button
                     colorScheme="green"
                     variant="outline"
