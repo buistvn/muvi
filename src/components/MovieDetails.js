@@ -15,7 +15,14 @@ import { FaStar } from 'react-icons/fa';
 import FavoritesButton from './FavoritesButton';
 import WatchlistButton from './WatchlistButton';
 
-const MovieDetails = ({ details }) => {
+const MovieDetails = ({
+    details,
+    favorite,
+    watchlist,
+    user,
+    update,
+    setUpdate,
+}) => {
     const altTextColor = useColorModeValue('gray.400', 'gray.500');
 
     const title = details.title;
@@ -29,6 +36,7 @@ const MovieDetails = ({ details }) => {
     const poster = details.poster_path
         ? `https://image.tmdb.org/t/p/original/${details.poster_path}`
         : null;
+    const id = details.id;
 
     return (
         <Grid templateColumns="35% 60%" justifyContent="space-between" w="100%">
@@ -87,10 +95,22 @@ const MovieDetails = ({ details }) => {
                         </Flex>
                     </Flex>
                 )}
-                <Flex columnGap="16px">
-                    <FavoritesButton />
-                    <WatchlistButton />
-                </Flex>
+                {user && (
+                    <Flex columnGap="16px">
+                        <FavoritesButton
+                            state={favorite}
+                            id={id}
+                            update={update}
+                            setUpdate={setUpdate}
+                        />
+                        <WatchlistButton
+                            state={watchlist}
+                            id={id}
+                            update={update}
+                            setUpdate={setUpdate}
+                        />
+                    </Flex>
+                )}
                 {synopsis && (
                     <Flex flexDir="column" rowGap="4px">
                         <Text color={altTextColor} fontSize="18px">
