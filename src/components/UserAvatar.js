@@ -61,13 +61,7 @@ const UserAvatar = () => {
 
     return (
         <Menu>
-            <MenuButton
-                as={Avatar}
-                size="sm"
-                name={name}
-                src={avatar}
-                _hover={{ cursor: 'pointer' }}
-            ></MenuButton>
+            <Avatar as={MenuButton} size="sm" name={name} src={avatar} />
             <MenuList>
                 <MenuItem onClick={() => handleClick()}>Sign out</MenuItem>
             </MenuList>
