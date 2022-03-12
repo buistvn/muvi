@@ -10,6 +10,7 @@ const MyApp = ({ Component, pageProps }) => {
     const [sessionID, setSessionID] = useState('');
     const [accountID, setAccountID] = useState('');
     const [name, setName] = useState('');
+    const [avatar, setAvatar] = useState('');
     const value = {
         user,
         setUser,
@@ -19,6 +20,8 @@ const MyApp = ({ Component, pageProps }) => {
         setAccountID,
         name,
         setName,
+        avatar,
+        setAvatar,
     };
     return (
         <UserContext.Provider value={value}>
