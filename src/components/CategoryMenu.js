@@ -1,11 +1,13 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { FaChartLine, FaChevronDown, FaPlay, FaStar } from 'react-icons/fa';
 
-const CategoryMenu = ({ categories, setCategory, setPage }) => {
-    const handleClick = (newCategory) => {
-        setCategory(newCategory);
-        setPage(1);
+const CategoryMenu = ({ categories, setPage }) => {
+    const router = useRouter();
+
+    const handleClick = (category) => {
+        router.push(`/movies/${category}?page=1`);
     };
 
     return (
@@ -16,19 +18,19 @@ const CategoryMenu = ({ categories, setCategory, setPage }) => {
             <MenuList>
                 <MenuItem
                     icon={<FaChartLine />}
-                    onClick={() => handleClick(categories.POPULAR)}
+                    onClick={() => handleClick(categories.POPULAR.pathname)}
                 >
                     Popular
                 </MenuItem>
                 <MenuItem
                     icon={<FaStar />}
-                    onClick={() => handleClick(categories.TOP_RATED)}
+                    onClick={() => handleClick(categories.TOP_RATED.pathname)}
                 >
                     Top Rated
                 </MenuItem>
                 <MenuItem
                     icon={<FaPlay />}
-                    onClick={() => handleClick(categories.NOW_PLAYING)}
+                    onClick={() => handleClick(categories.NOW_PLAYING.pathname)}
                 >
                     Now Playing
                 </MenuItem>

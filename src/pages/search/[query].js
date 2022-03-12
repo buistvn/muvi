@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Divider, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
+import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 
-import MovieList from '../components/MovieList';
-import Pagination from '../components/Pagination';
-import useSearchMovies from '../hooks/useSearchMovies';
+import MovieList from '../../components/MovieList';
+import useSearchMovies from '../../hooks/useSearchMovies';
 
 const Search = () => {
-    const [page, setPage] = useState(1);
     const router = useRouter();
-    const query = router.query.q;
+    const query = router.query.query;
+    const page = router.query.page;
     const [movies, totalPages, loading] = useSearchMovies(query, page);
 
     useEffect(() => {
-        setPage(1);
+        router.push(`${router.asPath.split('?')[0]}?page=1`);
     }, [query]);
 
     return (
@@ -23,19 +22,11 @@ const Search = () => {
                 {!loading ? (
                     <>
                         {movies && !!movies.length ? (
-                            <>
-                                <MovieList movies={movies} />
-                                {totalPages > 1 && (
-                                    <>
-                                        <Divider />
-                                        <Pagination
-                                            page={page}
-                                            setPage={setPage}
-                                            totalPages={totalPages}
-                                        />
-                                    </>
-                                )}
-                            </>
+                            <MovieList
+                                movies={movies}
+                                page={page}
+                                totalPages={totalPages}
+                            />
                         ) : (
                             <Text>
                                 There were no matches found for your search.
