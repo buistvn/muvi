@@ -6,6 +6,7 @@ import {
     Heading,
     Icon,
     useColorModeValue,
+    Avatar,
 } from '@chakra-ui/react';
 import { RiMovie2Line } from 'react-icons/ri';
 
@@ -16,7 +17,7 @@ import { UserContext } from '../pages/_app';
 
 const Navbar = () => {
     const borderColor = useColorModeValue('gray.200', 'gray.700');
-    const { user } = useContext(UserContext);
+    const { user, avatar, name } = useContext(UserContext);
 
     return (
         <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
@@ -44,6 +45,7 @@ const Navbar = () => {
                     )}
                     <Searchbar />
                     <ColorModeSwitcher />
+                    {user && <Avatar size="sm" name={name} src={avatar} />}
                 </Flex>
             </Flex>
         </Flex>
