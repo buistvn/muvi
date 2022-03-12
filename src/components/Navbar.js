@@ -35,10 +35,10 @@ const Navbar = () => {
                     </Link>
                     {user && (
                         <>
-                            <Link href="/favorites">
+                            <Link href="/favorites?page=1">
                                 <Button variant="ghost">Favorites</Button>
                             </Link>
-                            <Link href="/watchlist">
+                            <Link href="/watchlist?page=1">
                                 <Button variant="ghost">Watchlist</Button>
                             </Link>
                         </>
