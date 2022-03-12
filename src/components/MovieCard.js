@@ -10,7 +10,7 @@ const MovieCard = ({ movie }) => {
     const poster = movie.poster_path
         ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}`
         : null;
-    const path = `/movies/${movie.id}`;
+    const path = `/movie/${movie.id}`;
 
     return (
         <Link href={path}>
