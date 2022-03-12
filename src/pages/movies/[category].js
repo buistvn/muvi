@@ -15,6 +15,7 @@ const categories = {
 const Movies = () => {
     const router = useRouter();
     const category = router.query.category;
+    const page = router.query.page;
     let categoryQuery;
     if (category === categories.POPULAR.pathname) {
         categoryQuery = categories.POPULAR.query;
@@ -23,7 +24,6 @@ const Movies = () => {
     } else if (category === categories.NOW_PLAYING.pathname) {
         categoryQuery = categories.NOW_PLAYING.query;
     }
-    const [page, setPage] = useState(1);
     const [movies, totalPages, loading] = useMovieCategory(categoryQuery, page);
 
     return (
@@ -39,13 +39,12 @@ const Movies = () => {
                     {category === categories.NOW_PLAYING.pathname && (
                         <Heading>Now Playing</Heading>
                     )}
-                    <CategoryMenu categories={categories} setPage={setPage} />
+                    <CategoryMenu categories={categories} />
                 </Flex>
                 {!loading ? (
                     <MovieList
                         movies={movies}
                         page={page}
-                        setPage={setPage}
                         totalPages={totalPages}
                     />
                 ) : (

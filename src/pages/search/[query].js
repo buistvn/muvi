@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 
-import MovieList from '../components/MovieList';
-import useSearchMovies from '../hooks/useSearchMovies';
+import MovieList from '../../components/MovieList';
+import useSearchMovies from '../../hooks/useSearchMovies';
 
 const Search = () => {
-    const [page, setPage] = useState(1);
     const router = useRouter();
-    const query = router.query.q;
+    const query = router.query.query;
+    const page = router.query.page;
     const [movies, totalPages, loading] = useSearchMovies(query, page);
 
     useEffect(() => {
-        setPage(1);
+        router.push(`${router.asPath.split('?')[0]}?page=1`);
     }, [query]);
 
     return (
@@ -25,7 +25,6 @@ const Search = () => {
                             <MovieList
                                 movies={movies}
                                 page={page}
-                                setPage={setPage}
                                 totalPages={totalPages}
                             />
                         ) : (

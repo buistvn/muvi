@@ -11,7 +11,7 @@ const Searchbar = () => {
         event.preventDefault();
 
         if (query !== '') {
-            router.push(`/search?q=${query}`);
+            router.push(`/search/${query}`);
         }
     };
 

@@ -7,8 +7,7 @@ const CategoryMenu = ({ categories, setPage }) => {
     const router = useRouter();
 
     const handleClick = (category) => {
-        router.push(`/movies/${category}`);
-        setPage(1);
+        router.push(`/movies/${category}?page=1`);
     };
 
     return (
