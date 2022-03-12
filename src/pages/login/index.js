@@ -37,7 +37,7 @@ const Login = () => {
         if (parsed.approved == 'true') fetchSession();
     }, []);
 
-    return <Text>Error</Text>;
+    return <></>;
 };
 
 export default Login;
