@@ -10,9 +10,7 @@ const Home = () => {
         <Box>
             <Flex justify="center" my="32px">
                 <Flex flexDir="column" rowGap="32px" w="75%">
-                    <Flex justify="space-between" align="center">
-                        <Heading>Trending</Heading>
-                    </Flex>
+                    <Heading>Trending</Heading>
                     {!loading ? (
                         <TrendingList movies={movies} />
                     ) : (
@@ -20,21 +18,13 @@ const Home = () => {
                             <Spinner size="xl" />
                         </Flex>
                     )}
-                </Flex>
-            </Flex>
-            <Flex justify="center" my="32px">
-                <Flex flexDir="column" rowGap="32px" w="75%">
-                    <Flex justify="space-between" align="center">
-                        <Heading>About Muvi</Heading>
-                    </Flex>
-                    <Flex justify="space-between" align="center">
-                        <Text fontSize="2xl">
-                            Muvi is a basic web-app that uses TMDB api to allow
-                            users to search and explore movies. In addition,
-                            users can login to TMDB to save their favorite
-                            movies and create a watchlist.
-                        </Text>
-                    </Flex>
+                    <Heading>About MUVI</Heading>
+                    <Text fontSize="2xl">
+                        MUVI is a web app that uses the TMDB API to allow users
+                        to search and explore movies. In addition, users can
+                        login to TMDB to save their favorite movies and create a
+                        watchlist.
+                    </Text>
                 </Flex>
             </Flex>
         </Box>
