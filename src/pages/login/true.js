@@ -19,14 +19,7 @@ const True = () => {
                 const body = await res.json();
                 setAccountID(body.id);
                 setName(body.username);
-                if (
-                    body.avatar.gravatar.hash !=
-                    '00f78b15fde94e9f9026ffafc7835f1a'
-                ) {
-                    setAvatar(
-                        `https://secure.gravatar.com/avatar/${body.avatar.gravatar.hash}.jpg?s=200`
-                    );
-                } else if (body.avatar.tmdb.avatar_path != null) {
+                if (body.avatar.tmdb.avatar_path != null) {
                     setAvatar(
                         `https://image.tmdb.org/t/p/w200${body.avatar.tmdb.avatar_path}`
                     );
