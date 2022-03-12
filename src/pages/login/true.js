@@ -1,10 +1,13 @@
-import { Text } from '@chakra-ui/react';
+import { useToast } from '@chakra-ui/react';
 import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../_app';
+import { useRouter } from 'next/router';
 
 const True = () => {
     const { sessionID, setAccountID, name, setName, setAvatar } =
         useContext(UserContext);
+    const toast = useToast();
+    const router = useRouter();
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(
@@ -30,11 +33,19 @@ const True = () => {
                 } else {
                     setAvatar('');
                 }
+                toast({
+                    title: 'Logged In',
+                    description: `Successfully logged in as: ${body.username}`,
+                    status: 'success',
+                    duration: 5000,
+                    isClosable: true,
+                });
+                router.push('/');
             }
         }
         fetchData();
     }, []);
-    return <Text>Logged in Successfully: {name}</Text>;
+    return <></>;
 };
 
 export default True;
