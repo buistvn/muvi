@@ -29,7 +29,7 @@ const Navbar = () => {
                 </Link>
                 <Flex align="center" columnGap="16px">
                     <LoginLink />
-                    <Link href="/movies">
+                    <Link href="/movies/popular">
                         <Button variant="ghost">Movies</Button>
                     </Link>
                     {user && (

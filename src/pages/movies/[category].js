@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Divider, Flex, Heading, Spinner } from '@chakra-ui/react';
 
 import CategoryMenu from '../../components/CategoryMenu';
@@ -7,34 +8,39 @@ import Pagination from '../../components/Pagination';
 import useMovieCategory from '../../hooks/useMovieCategory';
 
 const categories = {
-    POPULAR: 'popular',
-    TOP_RATED: 'top_rated',
-    NOW_PLAYING: 'now_playing',
+    POPULAR: { pathname: 'popular', query: 'popular' },
+    TOP_RATED: { pathname: 'top-rated', query: 'top_rated' },
+    NOW_PLAYING: { pathname: 'now-playing', query: 'now_playing' },
 };
 
 const Movies = () => {
-    const [category, setCategory] = useState(categories.POPULAR);
+    const router = useRouter();
+    const category = router.query.category;
+    let categoryQuery;
+    if (category === categories.POPULAR.pathname) {
+        categoryQuery = categories.POPULAR.query;
+    } else if (category === categories.TOP_RATED.pathname) {
+        categoryQuery = categories.TOP_RATED.query;
+    } else if (category === categories.NOW_PLAYING.pathname) {
+        categoryQuery = categories.NOW_PLAYING.query;
+    }
     const [page, setPage] = useState(1);
-    const [movies, totalPages, loading] = useMovieCategory(category, page);
+    const [movies, totalPages, loading] = useMovieCategory(categoryQuery, page);
 
     return (
         <Flex justify="center" my="32px">
             <Flex flexDir="column" rowGap="32px" w="75%">
                 <Flex justify="space-between" align="center">
-                    {category === categories.POPULAR && (
+                    {category === categories.POPULAR.pathname && (
                         <Heading>Popular</Heading>
                     )}
-                    {category === categories.TOP_RATED && (
+                    {category === categories.TOP_RATED.pathname && (
                         <Heading>Top Rated</Heading>
                     )}
-                    {category === categories.NOW_PLAYING && (
+                    {category === categories.NOW_PLAYING.pathname && (
                         <Heading>Now Playing</Heading>
                     )}
-                    <CategoryMenu
-                        categories={categories}
-                        setCategory={setCategory}
-                        setPage={setPage}
-                    />
+                    <CategoryMenu categories={categories} setPage={setPage} />
                 </Flex>
                 {!loading ? (
                     <>
