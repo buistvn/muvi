@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Divider, Flex, Heading, Spinner, Text } from '@chakra-ui/react';
+import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 
 import MovieList from '../components/MovieList';
-import Pagination from '../components/Pagination';
 import useSearchMovies from '../hooks/useSearchMovies';
 
 const Search = () => {
@@ -23,19 +22,12 @@ const Search = () => {
                 {!loading ? (
                     <>
                         {movies && !!movies.length ? (
-                            <>
-                                <MovieList movies={movies} />
-                                {totalPages > 1 && (
-                                    <>
-                                        <Divider />
-                                        <Pagination
-                                            page={page}
-                                            setPage={setPage}
-                                            totalPages={totalPages}
-                                        />
-                                    </>
-                                )}
-                            </>
+                            <MovieList
+                                movies={movies}
+                                page={page}
+                                setPage={setPage}
+                                totalPages={totalPages}
+                            />
                         ) : (
                             <Text>
                                 There were no matches found for your search.

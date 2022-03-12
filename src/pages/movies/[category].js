@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Divider, Flex, Heading, Spinner } from '@chakra-ui/react';
+import { Flex, Heading, Spinner } from '@chakra-ui/react';
 
 import CategoryMenu from '../../components/CategoryMenu';
 import MovieList from '../../components/MovieList';
-import Pagination from '../../components/Pagination';
 import useMovieCategory from '../../hooks/useMovieCategory';
 
 const categories = {
@@ -43,19 +42,12 @@ const Movies = () => {
                     <CategoryMenu categories={categories} setPage={setPage} />
                 </Flex>
                 {!loading ? (
-                    <>
-                        <MovieList movies={movies} />
-                        {totalPages > 1 && (
-                            <>
-                                <Divider />
-                                <Pagination
-                                    page={page}
-                                    setPage={setPage}
-                                    totalPages={totalPages}
-                                />
-                            </>
-                        )}
-                    </>
+                    <MovieList
+                        movies={movies}
+                        page={page}
+                        setPage={setPage}
+                        totalPages={totalPages}
+                    />
                 ) : (
                     <Flex justify="center">
                         <Spinner size="xl" />
