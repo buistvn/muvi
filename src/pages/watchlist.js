@@ -31,7 +31,7 @@ const Watchlist = () => {
                             />
                         ) : (
                             <Text>
-                                There were no matches found for your search.
+                                You haven't added any movies to your watchlist.
                             </Text>
                         )}
                     </>

@@ -31,7 +31,7 @@ const Favorites = () => {
                             />
                         ) : (
                             <Text>
-                                There were no matches found for your search.
+                                You haven't added any movies to your favorites.
                             </Text>
                         )}
                     </>
