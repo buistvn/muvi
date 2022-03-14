@@ -12,7 +12,7 @@ const False = () => {
             duration: 5000,
             isClosable: true,
         });
-        router.push('/');
+        router.push(router.query.path);
     }, []);
     return <></>;
 };
