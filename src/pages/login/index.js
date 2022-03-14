@@ -9,13 +9,13 @@ const Login = () => {
 
     useEffect(() => {
         const parsed = queryString.parse(location.search);
-        console.log(parsed);
         let pathQuery;
         if (parsed.page != null) {
             pathQuery = `?path=${parsed.path}?page=${parsed.page}`;
         } else {
             pathQuery = `?path=${parsed.path}`;
         }
+
         async function fetchSession() {
             const res = await fetch(
                 `https://api.themoviedb.org/3/authentication/session/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
