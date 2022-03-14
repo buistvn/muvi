@@ -27,7 +27,6 @@ const WatchlistButton = ({ state, id, update, setUpdate }) => {
             } else {
                 const body = await res.json();
                 setUpdate(!update);
-                console.log('Status:', body.status_message);
             }
         }
         addToList();

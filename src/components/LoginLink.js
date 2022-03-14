@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Link } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 const LoginLink = () => {
     const [requestToken, setRequestToken] = useState('');
+    const router = useRouter();
 
     useEffect(() => {
         async function fetchToken() {
@@ -21,7 +23,8 @@ const LoginLink = () => {
     }, []);
 
     const queryParams = new URLSearchParams({
-        redirect_to: process.env.NEXT_PUBLIC_REDIRECT_URL,
+        redirect_to:
+            process.env.NEXT_PUBLIC_REDIRECT_URL + `?path=${router.asPath}`,
     });
     const baseUrl = 'https://www.themoviedb.org/authenticate/';
     const url = `${baseUrl}${requestToken}?${queryParams.toString()}`;

@@ -33,7 +33,7 @@ const True = () => {
                     duration: 5000,
                     isClosable: true,
                 });
-                router.push('/');
+                router.push(router.query.path);
             }
         }
         fetchData();

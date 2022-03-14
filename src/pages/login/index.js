@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { UserContext } from '../_app';
 
@@ -10,7 +9,13 @@ const Login = () => {
 
     useEffect(() => {
         const parsed = queryString.parse(location.search);
-        console.log(parsed);
+        let pathQuery;
+        if (parsed.page != null) {
+            pathQuery = `?path=${parsed.path}?page=${parsed.page}`;
+        } else {
+            pathQuery = `?path=${parsed.path}`;
+        }
+
         async function fetchSession() {
             const res = await fetch(
                 `https://api.themoviedb.org/3/authentication/session/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
@@ -25,16 +30,16 @@ const Login = () => {
                 }
             );
             if (res.status === 401) {
-                console.log('== Error: No Session ID');
+                router.push(`/login/false${pathQuery}`);
             } else {
                 const body = await res.json();
-                console.log('Recieved SessionID', body.session_id);
                 setUser(body.success);
                 setSessionID(body.session_id);
-                router.push(`/login/${body.success}`);
+                router.push(`/login/${body.success}${pathQuery}`);
             }
         }
         if (parsed.approved == 'true') fetchSession();
+        else router.push(`/login/false${pathQuery}`);
     }, []);
 
     return <></>;
