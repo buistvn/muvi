@@ -74,7 +74,7 @@ const NavbarResponsive = () => {
                                     <ColorModeSwitcher />
                                 </Flex>
                                 <Text>Navigation</Text>
-                                <Flex w="80px" />
+                                {user ? <Flex w="80px" /> : <Flex w="40px" />}
                             </Flex>
                         </DrawerHeader>
                         <Divider />
