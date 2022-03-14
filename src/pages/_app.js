@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, Hide, Show } from '@chakra-ui/react';
 
 import Navbar from '../components/Navbar';
+import NavbarResponsive from '../components/NavbarResponsive';
+import theme from '../themes/theme';
 
 export const UserContext = React.createContext();
 
@@ -23,10 +25,16 @@ const MyApp = ({ Component, pageProps }) => {
         avatar,
         setAvatar,
     };
+
     return (
         <UserContext.Provider value={value}>
-            <ChakraProvider>
-                <Navbar />
+            <ChakraProvider theme={theme}>
+                <Hide below="md">
+                    <Navbar />
+                </Hide>
+                <Show below="md">
+                    <NavbarResponsive />
+                </Show>
                 <Component {...pageProps} />
             </ChakraProvider>
         </UserContext.Provider>

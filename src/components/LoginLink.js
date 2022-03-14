@@ -1,12 +1,11 @@
-import { Button } from '@chakra-ui/react';
-import React, { useState, useEffect } from 'react';
-//import fetch from 'isomorphic-unfetch';
+import React, { useEffect, useState } from 'react';
+import { Button, Link } from '@chakra-ui/react';
 
-export default function LoginLink() {
+const LoginLink = () => {
     const [requestToken, setRequestToken] = useState('');
 
     useEffect(() => {
-        async function fetchData() {
+        async function fetchToken() {
             const res = await fetch(
                 `https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
             );
@@ -15,10 +14,10 @@ export default function LoginLink() {
             } else {
                 const body = await res.json();
                 setRequestToken(body.request_token);
-                console.log('Recieved Token', requestToken);
             }
         }
-        fetchData();
+
+        fetchToken();
     }, []);
 
     const queryParams = new URLSearchParams({
@@ -26,9 +25,17 @@ export default function LoginLink() {
     });
     const baseUrl = 'https://www.themoviedb.org/authenticate/';
     const url = `${baseUrl}${requestToken}?${queryParams.toString()}`;
+
     return (
-        <a href={url}>
-            <Button variant="ghost">Login with TMDB</Button>
-        </a>
+        <Button
+            as={Link}
+            href={url}
+            variant="ghost"
+            style={{ textDecoration: 'none' }}
+        >
+            Login with TMDB
+        </Button>
     );
-}
+};
+
+export default LoginLink;

@@ -10,8 +10,8 @@ import {
 import { RiMovie2Line } from 'react-icons/ri';
 
 import ColorModeSwitcher from './ColorModeSwitcher';
-import Searchbar from './Searchbar';
 import LoginLink from './LoginLink';
+import Searchbar from './Searchbar';
 import UserAvatar from './UserAvatar';
 import { UserContext } from '../pages/_app';
 
@@ -21,14 +21,18 @@ const Navbar = () => {
 
     return (
         <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
-            <Flex justify="space-between" w="75%" py="16px">
+            <Flex
+                justify="space-between"
+                w={['96%', '96%', '96%', '75%']}
+                py="16px"
+            >
                 <Link href="/">
                     <Flex align="center" _hover={{ cursor: 'pointer' }}>
                         <Icon as={RiMovie2Line} w="36px" h="36px" />
                         <Heading>MUVI</Heading>
                     </Flex>
                 </Link>
-                <Flex align="center" columnGap="16px">
+                <Flex align="center" columnGap={['8px', '8px', '8px', '16px']}>
                     {!user && <LoginLink />}
                     <Link href="/movies/popular?page=1">
                         <Button variant="ghost">Movies</Button>

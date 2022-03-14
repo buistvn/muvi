@@ -9,7 +9,11 @@ const Home = () => {
     return (
         <Box>
             <Flex justify="center" my="32px">
-                <Flex flexDir="column" rowGap="32px" w="75%">
+                <Flex
+                    flexDir="column"
+                    rowGap="32px"
+                    w={['96%', '96%', '96%', '75%']}
+                >
                     <Heading>Trending</Heading>
                     {!loading ? (
                         <TrendingList movies={movies} />
@@ -19,7 +23,7 @@ const Home = () => {
                         </Flex>
                     )}
                     <Heading>About MUVI</Heading>
-                    <Text fontSize="2xl">
+                    <Text>
                         MUVI is a web app that uses the TMDB API to allow users
                         to search and explore movies. In addition, users can
                         login to TMDB to save their favorite movies and create a

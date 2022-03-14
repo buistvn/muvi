@@ -33,7 +33,7 @@ const Movie = () => {
 
     return (
         <Flex justify="center" my="32px">
-            <Flex justify="center" w="75%">
+            <Flex justify="center" w={['96%', '96%', '96%', '75%']}>
                 {!loading && details ? (
                     <MovieDetails
                         details={details}
