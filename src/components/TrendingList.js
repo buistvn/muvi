@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Flex, useColorModeValue } from '@chakra-ui/react';
 
 import MovieCard from './MovieCard';
 
@@ -7,10 +7,9 @@ const TrendingList = ({ movies }) => {
     const scrollbarColor = useColorModeValue('gray.400', 'gray.500');
 
     return (
-        <Box
-            display="flex"
+        <Flex
+            gap={['4px', '8px', '12px', '12px']}
             overflowX="scroll"
-            gap="12px"
             pb="8px"
             sx={{
                 '&::-webkit-scrollbar': {
@@ -24,11 +23,15 @@ const TrendingList = ({ movies }) => {
             }}
         >
             {movies.map((movie) => (
-                <Box flex="0 0 100%" flexBasis="15%" key={movie.id}>
+                <Flex
+                    shrink="0"
+                    basis={['25%', '20%', '15%', '15%']}
+                    key={movie.id}
+                >
                     <MovieCard movie={movie} />
-                </Box>
+                </Flex>
             ))}
-        </Box>
+        </Flex>
     );
 };
 

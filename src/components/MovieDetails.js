@@ -39,7 +39,11 @@ const MovieDetails = ({
     const id = details.id;
 
     return (
-        <Grid templateColumns="35% 60%" justifyContent="space-between" w="100%">
+        <Grid
+            templateColumns={['100%', '35% 60%', '35% 60%', '35% 60%']}
+            justifyContent="space-between"
+            w="100%"
+        >
             {poster ? (
                 <Image src={poster} w="100%" borderRadius="8px" />
             ) : (
@@ -54,7 +58,9 @@ const MovieDetails = ({
             )}
             <Flex flexDir="column" rowGap="32px">
                 <Flex flexDir="column" rowGap="4px">
-                    <Heading size="4xl">{title}</Heading>
+                    <Heading fontSize={['32px', '48px', '64px', '72px']}>
+                        {title}
+                    </Heading>
                     <Flex columnGap="4px">
                         {year && (
                             <Text color={altTextColor} fontSize="18px">
@@ -96,7 +102,10 @@ const MovieDetails = ({
                     </Flex>
                 )}
                 {user && (
-                    <Flex columnGap="16px">
+                    <Flex
+                        flexDir={['column', 'column', 'row', 'row']}
+                        gap="16px"
+                    >
                         <FavoritesButton
                             state={favorite}
                             id={id}
@@ -124,7 +133,10 @@ const MovieDetails = ({
                         <Text color={altTextColor} fontSize="18px">
                             Genres
                         </Text>
-                        <Flex columnGap="8px">
+                        <Flex
+                            flexDir={['column', 'column', 'row', 'row']}
+                            gap="8px"
+                        >
                             {genres.map((genre) => {
                                 return (
                                     <Tag size="lg" key={genre.id}>

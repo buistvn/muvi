@@ -25,6 +25,7 @@ const MyApp = ({ Component, pageProps }) => {
         avatar,
         setAvatar,
     };
+
     return (
         <UserContext.Provider value={value}>
             <ChakraProvider theme={theme}>

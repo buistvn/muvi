@@ -32,7 +32,7 @@ const Navbar = () => {
                         <Heading>MUVI</Heading>
                     </Flex>
                 </Link>
-                <Flex align="center" columnGap="16px">
+                <Flex align="center" columnGap={['8px', '8px', '8px', '16px']}>
                     {!user && <LoginLink />}
                     <Link href="/movies/popular?page=1">
                         <Button variant="ghost">Movies</Button>

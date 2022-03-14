@@ -13,7 +13,7 @@ const MovieCard = ({ movie }) => {
     const path = `/movie/${movie.id}`;
 
     return (
-        <Link href={path}>
+        <Link href={path} w="100%" h="100%">
             <Flex
                 pos="relative"
                 style={hover ? { cursor: 'pointer' } : null}
@@ -24,7 +24,6 @@ const MovieCard = ({ movie }) => {
                     <Image
                         src={poster}
                         alt={title}
-                        h="100%"
                         borderRadius="8px"
                         style={hover ? { filter: 'brightness(25%)' } : null}
                     />
@@ -36,14 +35,29 @@ const MovieCard = ({ movie }) => {
                         borderColor="gray.700"
                         borderRadius="8px"
                         background="gray.900"
+                        style={{ aspectRatio: '2/3' }}
                     />
                 )}
                 {(hover || !poster) && (
-                    <Flex flexDir="column" pos="absolute" bottom="0%" p="16px">
-                        <Text color="white" fontWeight="700" fontSize="20px">
+                    <Flex
+                        flexDir="column"
+                        pos="absolute"
+                        bottom="0%"
+                        p={['8px', '8px', '12px', '16px']}
+                    >
+                        <Text
+                            color="white"
+                            fontWeight="700"
+                            fontSize={['14px', '14px', '16px', '20px']}
+                        >
                             {title}
                         </Text>
-                        <Text color="gray.400">{year}</Text>
+                        <Text
+                            color="gray.400"
+                            fontSize={['10px', '10px', '12px', '16px']}
+                        >
+                            {year}
+                        </Text>
                     </Flex>
                 )}
             </Flex>

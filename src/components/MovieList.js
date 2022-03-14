@@ -8,8 +8,13 @@ const MovieList = ({ movies, page, setPage, totalPages }) => {
     return (
         <Flex flexDir="column" rowGap="32px">
             <Grid
-                templateColumns="19% 19% 19% 19% 19%"
-                gap="12px"
+                templateColumns={[
+                    '48% 48%',
+                    '24% 24% 24% 24%',
+                    '19.2% 19.2% 19.2% 19.2% 19.2%',
+                    '19.2% 19.2% 19.2% 19.2% 19.2%',
+                ]}
+                gap={['6px', '8px', '10px', '12px']}
                 justifyContent="space-between"
             >
                 {movies.map((movie) => (

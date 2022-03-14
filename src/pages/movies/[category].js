@@ -28,7 +28,11 @@ const Movies = () => {
 
     return (
         <Flex justify="center" my="32px">
-            <Flex flexDir="column" rowGap="32px" w="75%">
+            <Flex
+                flexDir="column"
+                rowGap="32px"
+                w={['96%', '96%', '96%', '75%']}
+            >
                 <Flex justify="space-between" align="center">
                     {category === categories.POPULAR.pathname && (
                         <Heading>Popular</Heading>

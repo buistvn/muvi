@@ -19,7 +19,11 @@ const Favorites = () => {
 
     return (
         <Flex justify="center" my="32px">
-            <Flex flexDir="column" rowGap="32px" w="75%">
+            <Flex
+                flexDir="column"
+                rowGap="32px"
+                w={['96%', '96%', '96%', '75%']}
+            >
                 <Heading>Favorites</Heading>
                 {!loading ? (
                     <>
