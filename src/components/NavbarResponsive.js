@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import {
     Button,
+    Divider,
     Drawer,
     DrawerBody,
     DrawerCloseButton,
@@ -67,12 +68,16 @@ const NavbarResponsive = () => {
                     <DrawerContent>
                         <DrawerCloseButton />
                         <DrawerHeader>
-                            <Flex align="center" columnGap="8px">
-                                {user && <UserAvatar />}
-                                <ColorModeSwitcher />
+                            <Flex justify="space-between" align="center">
+                                <Flex align="center" columnGap="8px">
+                                    {user && <UserAvatar />}
+                                    <ColorModeSwitcher />
+                                </Flex>
                                 <Text>Navigation</Text>
+                                <Flex w="80px" />
                             </Flex>
                         </DrawerHeader>
+                        <Divider />
                         <DrawerBody>
                             <Flex flexDir="column">
                                 {!user && <LoginLink />}
