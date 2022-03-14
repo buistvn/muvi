@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChakraProvider, useMediaQuery } from '@chakra-ui/react';
+import { ChakraProvider, Hide, Show } from '@chakra-ui/react';
 
 import Navbar from '../components/Navbar';
 import NavbarResponsive from '../components/NavbarResponsive';
@@ -25,12 +25,16 @@ const MyApp = ({ Component, pageProps }) => {
         avatar,
         setAvatar,
     };
-    const [isLargerThan768] = useMediaQuery('(min-width: 768px');
 
     return (
         <UserContext.Provider value={value}>
             <ChakraProvider theme={theme}>
-                {isLargerThan768 ? <Navbar /> : <NavbarResponsive />}
+                <Hide below="md">
+                    <Navbar />
+                </Hide>
+                <Show below="md">
+                    <NavbarResponsive />
+                </Show>
                 <Component {...pageProps} />
             </ChakraProvider>
         </UserContext.Provider>

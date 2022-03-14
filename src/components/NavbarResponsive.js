@@ -46,7 +46,7 @@ const NavbarResponsive = () => {
                         h="40px"
                         _hover={{ cursor: 'pointer' }}
                     >
-                        <Icon as={RiMovie2Line} w="24px" h="24px" />
+                        <Icon as={RiMovie2Line} w="32px" h="32px" />
                     </Flex>
                 </Link>
                 <Searchbar />

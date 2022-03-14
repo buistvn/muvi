@@ -28,7 +28,7 @@ const Navbar = () => {
             >
                 <Link href="/">
                     <Flex align="center" _hover={{ cursor: 'pointer' }}>
-                        <Icon as={RiMovie2Line} w="36px" h="36px" />
+                        <Icon as={RiMovie2Line} w="32px" h="32px" />
                         <Heading>MUVI</Heading>
                     </Flex>
                 </Link>
