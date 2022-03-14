@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import { Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { UserContext } from '../_app';
 

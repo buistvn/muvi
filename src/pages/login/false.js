@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 const False = () => {
     const toast = useToast();
     const router = useRouter();
-    console.log('hi');
     useEffect(() => {
         toast({
             title: 'Error Logging In',

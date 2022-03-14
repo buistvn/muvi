@@ -63,7 +63,12 @@ const UserAvatar = () => {
         <Menu>
             <Avatar as={MenuButton} size="sm" name={name} src={avatar} />
             <MenuList>
-                <MenuItem onClick={() => handleClick()}>Sign out</MenuItem>
+                <MenuItem
+                    fontSize={['14px', '14px', '16px', '16px']}
+                    onClick={() => handleClick()}
+                >
+                    Sign out
+                </MenuItem>
             </MenuList>
         </Menu>
     );
