@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
-import { useToast } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { useToast } from '@chakra-ui/react';
 
 const False = () => {
-    const toast = useToast();
     const router = useRouter();
+
+    const toast = useToast();
+
     useEffect(() => {
         toast({
             title: 'Error Logging In',
@@ -12,8 +14,10 @@ const False = () => {
             duration: 5000,
             isClosable: true,
         });
+
         router.push(router.query.path);
     }, []);
+
     return <></>;
 };
 

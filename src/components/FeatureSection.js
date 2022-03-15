@@ -25,12 +25,12 @@ const features = [
     },
     {
         description:
-            'Keep track of movies that you want to want to see with a personal watchlist',
+            'Keep track of movies that you want to see with a personal watchlist',
         icon: FaListAlt,
     },
     {
         description:
-            'Connect with your TMDB account through third party authentication',
+            'Connect to your TMDB account through third party authentication',
         icon: FaUser,
     },
 ];

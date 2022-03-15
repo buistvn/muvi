@@ -1,24 +1,27 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Flex, Spinner } from '@chakra-ui/react';
 
 import MovieDetails from '../../components/MovieDetails';
+import { UserContext } from '../../contexts/userContext';
 import useMovieDetails from '../../hooks/useMovieDetails';
-import { UserContext } from '../_app';
 
 const Movie = () => {
-    const router = useRouter();
-    const movieId = router.query.movieId;
-    const [details, loading] = useMovieDetails(movieId);
-    const { user, sessionID } = useContext(UserContext);
     const [favorite, setFavorite] = useState(false);
     const [watchlist, setWatchlist] = useState(false);
     const [update, setUpdate] = useState(false);
 
+    const { user } = useContext(UserContext);
+
+    const router = useRouter();
+    const movieId = router.query.movieId;
+
+    const [details, loading] = useMovieDetails(movieId);
+
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(
-                `https://api.themoviedb.org/3/movie/${movieId}/account_states?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionID}`
+                `https://api.themoviedb.org/3/movie/${movieId}/account_states?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${user.sessionId}`
             );
             if (res.status === 401) {
                 console.log('== Error: No Token');
@@ -28,7 +31,10 @@ const Movie = () => {
                 setFavorite(body.favorite);
             }
         }
-        if (user) fetchData();
+
+        if (user.isLoggedIn) {
+            fetchData();
+        }
     }, [update]);
 
     return (

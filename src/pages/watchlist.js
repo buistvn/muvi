@@ -3,17 +3,19 @@ import { useRouter } from 'next/router';
 import { Flex, Heading, Spinner, Text } from '@chakra-ui/react';
 
 import MovieList from '../components/MovieList';
-import { UserContext } from './_app';
+import { UserContext } from '../contexts/userContext';
 import useAccountList from '../hooks/useAccountList';
 
 const Watchlist = () => {
+    const { user } = useContext(UserContext);
+
     const router = useRouter();
     const page = router.query.page;
-    const { accountID, sessionID } = useContext(UserContext);
+
     const [movies, totalPages, loading] = useAccountList(
         'watchlist',
-        accountID,
-        sessionID,
+        user.accountId,
+        user.sessionId,
         page
     );
 

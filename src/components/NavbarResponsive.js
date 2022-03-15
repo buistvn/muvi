@@ -23,13 +23,15 @@ import ColorModeSwitcher from './ColorModeSwitcher';
 import LoginLink from './LoginLink';
 import Searchbar from './Searchbar';
 import UserAvatar from './UserAvatar';
-import { UserContext } from '../pages/_app';
+import { UserContext } from '../contexts/userContext';
 
 const NavbarResponsive = () => {
     const { user } = useContext(UserContext);
-    const borderColor = useColorModeValue('gray.200', 'gray.700');
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const buttonRef = React.useRef();
+
+    const borderColor = useColorModeValue('gray.200', 'gray.700');
 
     return (
         <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
@@ -70,21 +72,25 @@ const NavbarResponsive = () => {
                         <DrawerHeader>
                             <Flex justify="space-between" align="center">
                                 <Flex align="center" columnGap="8px">
-                                    {user && <UserAvatar />}
+                                    {user.isLoggedIn && <UserAvatar />}
                                     <ColorModeSwitcher />
                                 </Flex>
                                 <Text>Navigation</Text>
-                                {user ? <Flex w="80px" /> : <Flex w="40px" />}
+                                {user.isLoggedIn ? (
+                                    <Flex w="80px" />
+                                ) : (
+                                    <Flex w="40px" />
+                                )}
                             </Flex>
                         </DrawerHeader>
                         <Divider />
                         <DrawerBody>
                             <Flex flexDir="column">
-                                {!user && <LoginLink />}
+                                {!user.isLoggedIn && <LoginLink />}
                                 <Link href="/movies/popular?page=1">
                                     <Button variant="ghost">Movies</Button>
                                 </Link>
-                                {user && (
+                                {user.isLoggedIn && (
                                     <>
                                         <Link href="/favorites?page=1">
                                             <Button variant="ghost">
