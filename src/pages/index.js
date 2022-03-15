@@ -1,5 +1,15 @@
 import React from 'react';
-import { Flex, Heading, Spinner, Box, Text } from '@chakra-ui/react';
+import {
+    AspectRatio,
+    Box,
+    Flex,
+    Heading,
+    Image,
+    Spinner,
+    Text,
+} from '@chakra-ui/react';
+
+import FeatureSection from '../components/FeatureSection';
 import TrendingList from '../components/TrendingList';
 import useTrendingMovies from '../hooks/useTrendingMovies';
 
@@ -8,6 +18,27 @@ const Home = () => {
 
     return (
         <Box>
+            <Flex justify="center" pos="relative">
+                <AspectRatio w="100%" ratio={21 / 9}>
+                    <Image src="/background.jpg" />
+                </AspectRatio>
+                <Box pos="absolute" top="15%" left={['2%', '2%', '2%', '12%']}>
+                    <Text
+                        color="white"
+                        fontWeight="500"
+                        fontSize={['24px', '36px', '48px', '60px']}
+                    >
+                        A NEW MOVIE
+                    </Text>
+                    <Text
+                        color="white"
+                        fontWeight="500"
+                        fontSize={['24px', '36px', '48px', '60px']}
+                    >
+                        EVERYDAY
+                    </Text>
+                </Box>
+            </Flex>
             <Flex justify="center" my="32px">
                 <Flex
                     flexDir="column"
@@ -22,13 +53,7 @@ const Home = () => {
                             <Spinner size="xl" />
                         </Flex>
                     )}
-                    <Heading>About MUVI</Heading>
-                    <Text>
-                        MUVI is a web app that uses the TMDB API to allow users
-                        to search and explore movies. In addition, users can
-                        login to TMDB to save their favorite movies and create a
-                        watchlist.
-                    </Text>
+                    <FeatureSection />
                 </Flex>
             </Flex>
         </Box>
