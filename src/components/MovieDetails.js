@@ -101,7 +101,7 @@ const MovieDetails = ({
                         </Flex>
                     </Flex>
                 )}
-                {user && (
+                {user.isLoggedIn && (
                     <Flex
                         flexDir={['column', 'column', 'row', 'row']}
                         gap="16px"

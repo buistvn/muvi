@@ -1,34 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ChakraProvider, Hide, Show } from '@chakra-ui/react';
 
 import Navbar from '../components/Navbar';
 import NavbarResponsive from '../components/NavbarResponsive';
+import { UserProvider } from '../contexts/userContext';
 import theme from '../themes/theme';
 
-export const UserContext = React.createContext();
-
 const MyApp = ({ Component, pageProps }) => {
-    const [user, setUser] = useState(false);
-    const [sessionID, setSessionID] = useState('');
-    const [accountID, setAccountID] = useState('');
-    const [name, setName] = useState('');
-    const [avatar, setAvatar] = useState('');
-    const value = {
-        user,
-        setUser,
-        sessionID,
-        setSessionID,
-        accountID,
-        setAccountID,
-        name,
-        setName,
-        avatar,
-        setAvatar,
-    };
-
     return (
-        <UserContext.Provider value={value}>
-            <ChakraProvider theme={theme}>
+        <ChakraProvider theme={theme}>
+            <UserProvider>
                 <Hide below="md">
                     <Navbar />
                 </Hide>
@@ -36,8 +17,8 @@ const MyApp = ({ Component, pageProps }) => {
                     <NavbarResponsive />
                 </Show>
                 <Component {...pageProps} />
-            </ChakraProvider>
-        </UserContext.Provider>
+            </UserProvider>
+        </ChakraProvider>
     );
 };
 

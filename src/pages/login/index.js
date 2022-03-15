@@ -1,11 +1,13 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { UserContext } from '../_app';
+
+import { UserContext } from '../../contexts/userContext';
 
 const Login = () => {
+    const { setUser } = useContext(UserContext);
+
     const router = useRouter();
     const queryString = require('query-string');
-    const { setUser, setSessionID } = useContext(UserContext);
 
     useEffect(() => {
         const parsed = queryString.parse(location.search);
@@ -33,13 +35,22 @@ const Login = () => {
                 router.push(`/login/false${pathQuery}`);
             } else {
                 const body = await res.json();
-                setUser(body.success);
-                setSessionID(body.session_id);
+
+                setUser((prevState) => ({
+                    ...prevState,
+                    sessionId: body.session_id,
+                    isLoggedIn: body.success,
+                }));
+
                 router.push(`/login/${body.success}${pathQuery}`);
             }
         }
-        if (parsed.approved == 'true') fetchSession();
-        else router.push(`/login/false${pathQuery}`);
+
+        if (parsed.approved == 'true') {
+            fetchSession();
+        } else {
+            router.push(`/login/false${pathQuery}`);
+        }
     }, []);
 
     return <></>;

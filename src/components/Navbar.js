@@ -13,11 +13,12 @@ import ColorModeSwitcher from './ColorModeSwitcher';
 import LoginLink from './LoginLink';
 import Searchbar from './Searchbar';
 import UserAvatar from './UserAvatar';
-import { UserContext } from '../pages/_app';
+import { UserContext } from '../contexts/userContext';
 
 const Navbar = () => {
-    const borderColor = useColorModeValue('gray.200', 'gray.700');
     const { user } = useContext(UserContext);
+
+    const borderColor = useColorModeValue('gray.200', 'gray.700');
 
     return (
         <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
@@ -33,11 +34,11 @@ const Navbar = () => {
                     </Flex>
                 </Link>
                 <Flex align="center" columnGap={['8px', '8px', '8px', '16px']}>
-                    {!user && <LoginLink />}
+                    {!user.isLoggedIn && <LoginLink />}
                     <Link href="/movies/popular?page=1">
                         <Button variant="ghost">Movies</Button>
                     </Link>
-                    {user && (
+                    {user.isLoggedIn && (
                         <>
                             <Link href="/favorites?page=1">
                                 <Button variant="ghost">Favorites</Button>
@@ -49,7 +50,7 @@ const Navbar = () => {
                     )}
                     <Searchbar />
                     <ColorModeSwitcher />
-                    {user && <UserAvatar />}
+                    {user.isLoggedIn && <UserAvatar />}
                 </Flex>
             </Flex>
         </Flex>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useAccountList = (list, accountID, sessionID, page) => {
+const useAccountList = (list, accountId, sessionId, page) => {
     const [movies, setMovies] = useState([]);
     const [totalPages, setTotalPages] = useState(0);
     const [loading, setLoading] = useState(false);
@@ -15,7 +15,7 @@ const useAccountList = (list, accountID, sessionID, page) => {
 
             try {
                 const res = await fetch(
-                    `https://api.themoviedb.org/3/account/${accountID}/${list}/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&session_id=${sessionID}&page=${page}`,
+                    `https://api.themoviedb.org/3/account/${accountId}/${list}/movies?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&session_id=${sessionId}&page=${page}`,
                     { signal: controller.signal }
                 );
                 resBody = await res.json();
@@ -34,7 +34,7 @@ const useAccountList = (list, accountID, sessionID, page) => {
             }
         };
 
-        if (page) {
+        if (list && page) {
             fetchMovies();
         }
 
@@ -42,7 +42,7 @@ const useAccountList = (list, accountID, sessionID, page) => {
             controller.abort();
             ignore = true;
         };
-    }, [page]);
+    }, [list, page]);
 
     return [movies, totalPages, loading];
 };

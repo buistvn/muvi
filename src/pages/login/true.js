@@ -1,31 +1,44 @@
-import { useToast } from '@chakra-ui/react';
 import React, { useContext, useEffect } from 'react';
-import { UserContext } from '../_app';
 import { useRouter } from 'next/router';
+import { useToast } from '@chakra-ui/react';
+
+import { UserContext } from '../../contexts/userContext';
 
 const True = () => {
-    const { sessionID, setAccountID, name, setName, setAvatar } =
-        useContext(UserContext);
-    const toast = useToast();
     const router = useRouter();
+
+    const { user, setUser } = useContext(UserContext);
+
+    const toast = useToast();
+
     useEffect(() => {
         async function fetchData() {
             const res = await fetch(
-                `https://api.themoviedb.org/3/account?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionID}`
+                `https://api.themoviedb.org/3/account?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${user.sessionId}`
             );
             if (res.status === 401) {
                 console.log('== Error: No Token');
             } else {
                 const body = await res.json();
-                setAccountID(body.id);
-                setName(body.username);
+
+                setUser((prevState) => ({
+                    ...prevState,
+                    username: body.username,
+                    accountId: body.id,
+                }));
+
                 if (body.avatar.tmdb.avatar_path != null) {
-                    setAvatar(
-                        `https://image.tmdb.org/t/p/w200${body.avatar.tmdb.avatar_path}`
-                    );
+                    setUser((prevState) => ({
+                        ...prevState,
+                        avatar: `https://image.tmdb.org/t/p/w200${body.avatar.tmdb.avatar_path}`,
+                    }));
                 } else {
-                    setAvatar('');
+                    setUser((prevState) => ({
+                        ...prevState,
+                        avatar: '',
+                    }));
                 }
+
                 toast({
                     title: 'Logged In',
                     description: `Successfully logged in as: ${body.username}`,
@@ -33,11 +46,14 @@ const True = () => {
                     duration: 5000,
                     isClosable: true,
                 });
+
                 router.push(router.query.path);
             }
         }
+
         fetchData();
     }, []);
+
     return <></>;
 };
 

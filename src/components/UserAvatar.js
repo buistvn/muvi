@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../pages/_app';
 import { useRouter } from 'next/router';
 import {
     Avatar,
@@ -10,19 +9,14 @@ import {
     useToast,
 } from '@chakra-ui/react';
 
+import { UserContext } from '../contexts/userContext';
+
 const UserAvatar = () => {
-    const {
-        setUser,
-        setSessionID,
-        setAccountID,
-        setName,
-        setAvatar,
-        name,
-        avatar,
-        sessionID,
-    } = useContext(UserContext);
-    const toast = useToast();
+    const { user, setUser } = useContext(UserContext);
+
     const router = useRouter();
+
+    const toast = useToast();
 
     const handleClick = () => {
         async function logout() {
@@ -31,7 +25,7 @@ const UserAvatar = () => {
                 {
                     method: 'DELETE',
                     body: JSON.stringify({
-                        session_id: sessionID,
+                        session_id: user.sessionId,
                     }),
                     headers: {
                         'Content-Type': 'application/json',
@@ -43,16 +37,20 @@ const UserAvatar = () => {
             } else {
                 toast({
                     title: 'Logged Out',
-                    description: `Successfully logged out of: ${name}`,
+                    description: `Successfully logged out of: ${user.username}`,
                     status: 'success',
                     duration: 5000,
                     isClosable: true,
                 });
-                setUser(false);
-                setSessionID('');
-                setAccountID('');
-                setAvatar('');
-                setName('');
+
+                setUser({
+                    username: '',
+                    avatar: '',
+                    accountId: '',
+                    sessionId: '',
+                    isLoggedIn: false,
+                });
+
                 router.push('/');
             }
         }
@@ -61,11 +59,16 @@ const UserAvatar = () => {
 
     return (
         <Menu>
-            <Avatar as={MenuButton} size="sm" name={name} src={avatar} />
+            <Avatar
+                as={MenuButton}
+                size="sm"
+                name={user.username}
+                src={user.avatar}
+            />
             <MenuList>
                 <MenuItem
                     fontSize={['14px', '14px', '16px', '16px']}
-                    onClick={() => handleClick()}
+                    onClick={handleClick}
                 >
                     Sign out
                 </MenuItem>

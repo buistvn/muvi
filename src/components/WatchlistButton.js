@@ -1,15 +1,16 @@
 import React, { useContext } from 'react';
 import { Button } from '@chakra-ui/react';
 import { FaListAlt, FaRegListAlt } from 'react-icons/fa';
-import { UserContext } from '../pages/_app';
+
+import { UserContext } from '../contexts/userContext';
 
 const WatchlistButton = ({ state, id, update, setUpdate }) => {
-    const { accountID, sessionID } = useContext(UserContext);
+    const { user } = useContext(UserContext);
 
     const handleClick = () => {
         async function addToList() {
             const res = await fetch(
-                `https://api.themoviedb.org/3/account/${accountID}/watchlist?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${sessionID}`,
+                `https://api.themoviedb.org/3/account/${user.accountId}/watchlist?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${user.sessionId}`,
                 {
                     method: 'POST',
                     body: JSON.stringify({
