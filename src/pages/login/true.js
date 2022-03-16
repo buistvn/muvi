@@ -5,19 +5,19 @@ import { useToast } from '@chakra-ui/react';
 import { UserContext } from '../../contexts/userContext';
 
 const True = () => {
-    const router = useRouter();
-
     const { user, setUser } = useContext(UserContext);
+
+    const router = useRouter();
 
     const toast = useToast();
 
     useEffect(() => {
-        async function fetchData() {
+        const fetchAccount = async () => {
             const res = await fetch(
                 `https://api.themoviedb.org/3/account?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${user.sessionId}`
             );
             if (res.status === 401) {
-                console.log('== Error: No Token');
+                console.log('Error fetching account');
             } else {
                 const body = await res.json();
 
@@ -49,9 +49,9 @@ const True = () => {
 
                 router.push(router.query.path);
             }
-        }
+        };
 
-        fetchData();
+        fetchAccount();
     }, []);
 
     return <></>;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { Flex, Heading, Spinner } from '@chakra-ui/react';
 
@@ -16,6 +16,7 @@ const Movies = () => {
     const router = useRouter();
     const category = router.query.category;
     const page = router.query.page;
+
     let categoryQuery;
     if (category === categories.POPULAR.pathname) {
         categoryQuery = categories.POPULAR.query;
@@ -24,6 +25,7 @@ const Movies = () => {
     } else if (category === categories.NOW_PLAYING.pathname) {
         categoryQuery = categories.NOW_PLAYING.query;
     }
+
     const [movies, totalPages, loading] = useMovieCategory(categoryQuery, page);
 
     return (

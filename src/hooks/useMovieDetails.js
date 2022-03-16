@@ -9,7 +9,7 @@ const useMovieDetails = (movieId) => {
         const controller = new AbortController();
 
         const fetchDetails = async () => {
-            let resBody = {};
+            let body = {};
             setLoading(true);
 
             try {
@@ -17,7 +17,7 @@ const useMovieDetails = (movieId) => {
                     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US`,
                     { signal: controller.signal }
                 );
-                resBody = await res.json();
+                body = await res.json();
             } catch (e) {
                 if (e instanceof DOMException) {
                     console.log('HTTP request aborted');
@@ -27,7 +27,7 @@ const useMovieDetails = (movieId) => {
             }
 
             if (!ignore) {
-                setDetails(resBody);
+                setDetails(body);
                 setLoading(false);
             }
         };

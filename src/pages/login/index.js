@@ -7,6 +7,7 @@ const Login = () => {
     const { setUser } = useContext(UserContext);
 
     const router = useRouter();
+
     const queryString = require('query-string');
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const Login = () => {
             pathQuery = `?path=${parsed.path}`;
         }
 
-        async function fetchSession() {
+        const createSession = async () => {
             const res = await fetch(
                 `https://api.themoviedb.org/3/authentication/session/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
                 {
@@ -32,6 +33,7 @@ const Login = () => {
                 }
             );
             if (res.status === 401) {
+                console.log('Error creating session');
                 router.push(`/login/false${pathQuery}`);
             } else {
                 const body = await res.json();
@@ -44,10 +46,10 @@ const Login = () => {
 
                 router.push(`/login/${body.success}${pathQuery}`);
             }
-        }
+        };
 
         if (parsed.approved == 'true') {
-            fetchSession();
+            createSession();
         } else {
             router.push(`/login/false${pathQuery}`);
         }

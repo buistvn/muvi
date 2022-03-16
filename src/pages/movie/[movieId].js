@@ -19,21 +19,21 @@ const Movie = () => {
     const [details, loading] = useMovieDetails(movieId);
 
     useEffect(() => {
-        async function fetchData() {
+        const fetchStates = async () => {
             const res = await fetch(
                 `https://api.themoviedb.org/3/movie/${movieId}/account_states?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${user.sessionId}`
             );
             if (res.status === 401) {
-                console.log('== Error: No Token');
+                console.log('Error fetching states');
             } else {
                 const body = await res.json();
                 setWatchlist(body.watchlist);
                 setFavorite(body.favorite);
             }
-        }
+        };
 
         if (user.isLoggedIn) {
-            fetchData();
+            fetchStates();
         }
     }, [update]);
 
