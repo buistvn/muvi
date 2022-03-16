@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Link } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
+import { Button, Link } from '@chakra-ui/react';
 
 const LoginLink = () => {
     const [requestToken, setRequestToken] = useState('');
+
     const router = useRouter();
 
     useEffect(() => {
-        async function fetchToken() {
+        const fetchToken = async () => {
             const res = await fetch(
                 `https://api.themoviedb.org/3/authentication/token/new?api_key=${process.env.NEXT_PUBLIC_API_KEY}`
             );
             if (res.status === 401) {
-                console.log('== Error: No Token');
+                console.log('Error fetching token');
             } else {
                 const body = await res.json();
                 setRequestToken(body.request_token);
             }
-        }
+        };
 
         fetchToken();
     }, []);

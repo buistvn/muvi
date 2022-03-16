@@ -8,7 +8,7 @@ const WatchlistButton = ({ state, id, update, setUpdate }) => {
     const { user } = useContext(UserContext);
 
     const handleClick = () => {
-        async function addToList() {
+        const addToList = async () => {
             const res = await fetch(
                 `https://api.themoviedb.org/3/account/${user.accountId}/watchlist?api_key=${process.env.NEXT_PUBLIC_API_KEY}&session_id=${user.sessionId}`,
                 {
@@ -24,12 +24,13 @@ const WatchlistButton = ({ state, id, update, setUpdate }) => {
                 }
             );
             if (res.status === 401) {
-                console.log('== Error: No Session ID');
+                console.log('Error adding to list');
             } else {
                 const body = await res.json();
                 setUpdate(!update);
             }
-        }
+        };
+
         addToList();
     };
 

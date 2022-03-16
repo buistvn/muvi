@@ -10,7 +10,7 @@ const useMovieCategory = (category, page) => {
         const controller = new AbortController();
 
         const fetchMovies = async () => {
-            let resBody = {};
+            let body = {};
             setLoading(true);
 
             try {
@@ -18,7 +18,7 @@ const useMovieCategory = (category, page) => {
                     `https://api.themoviedb.org/3/movie/${category}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=${page}`,
                     { signal: controller.signal }
                 );
-                resBody = await res.json();
+                body = await res.json();
             } catch (e) {
                 if (e instanceof DOMException) {
                     console.log('HTTP request aborted');
@@ -28,8 +28,8 @@ const useMovieCategory = (category, page) => {
             }
 
             if (!ignore) {
-                setMovies(resBody.results || []);
-                setTotalPages(resBody.total_pages);
+                setMovies(body.results || []);
+                setTotalPages(body.total_pages);
                 setLoading(false);
             }
         };

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { FaChartLine, FaChevronDown, FaPlay, FaStar } from 'react-icons/fa';
 
-const CategoryMenu = ({ categories, setPage }) => {
+const CategoryMenu = ({ categories }) => {
     const router = useRouter();
 
     const handleClick = (category) => {

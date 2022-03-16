@@ -30,7 +30,7 @@ const features = [
     },
     {
         description:
-            'Connect to your TMDB account through third party authentication',
+            'Connect to your TMDB account with third party authentication',
         icon: FaUser,
     },
 ];

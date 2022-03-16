@@ -32,9 +32,18 @@ const NavbarResponsive = () => {
     const buttonRef = React.useRef();
 
     const borderColor = useColorModeValue('gray.200', 'gray.700');
+    const backgroundColor = useColorModeValue('white', 'gray.800');
 
     return (
-        <Flex justify="center" borderBottom="1px" borderColor={borderColor}>
+        <Flex
+            justify="center"
+            pos="sticky"
+            zIndex={1}
+            top="0px"
+            borderBottom="1px"
+            borderColor={borderColor}
+            background={backgroundColor}
+        >
             <Flex
                 justify="space-between"
                 w={['96%', '96%', '96%', '75%']}

@@ -9,6 +9,7 @@ const Search = () => {
     const router = useRouter();
     const query = router.query.query;
     const page = router.query.page;
+
     const [movies, totalPages, loading] = useSearchMovies(query, page);
 
     useEffect(() => {

@@ -9,7 +9,7 @@ const useTrendingMovies = () => {
         const controller = new AbortController();
 
         const fetchMovies = async () => {
-            let resBody = {};
+            let body = {};
             setLoading(true);
 
             try {
@@ -17,7 +17,7 @@ const useTrendingMovies = () => {
                     `https://api.themoviedb.org/3/trending/movie/week?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
                     { signal: controller.signal }
                 );
-                resBody = await res.json();
+                body = await res.json();
             } catch (e) {
                 if (e instanceof DOMException) {
                     console.log('HTTP request aborted');
@@ -27,7 +27,7 @@ const useTrendingMovies = () => {
             }
 
             if (!ignore) {
-                setMovies(resBody.results || []);
+                setMovies(body.results || []);
                 setLoading(false);
             }
         };

@@ -11,7 +11,9 @@ import { FaSearch } from 'react-icons/fa';
 
 const Searchbar = () => {
     const [query, setQuery] = useState('');
+
     const router = useRouter();
+
     const textColor = useColorModeValue('gray.400', 'gray.500');
     const borderColor = useColorModeValue('gray.200', 'gray.700');
     const inputColor = useColorModeValue('gray.100', 'gray.900');

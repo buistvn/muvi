@@ -19,7 +19,7 @@ const UserAvatar = () => {
     const toast = useToast();
 
     const handleClick = () => {
-        async function logout() {
+        const deleteSession = async () => {
             const res = await fetch(
                 `https://api.themoviedb.org/3/authentication/session?api_key=${process.env.NEXT_PUBLIC_API_KEY}`,
                 {
@@ -33,7 +33,7 @@ const UserAvatar = () => {
                 }
             );
             if (res.status === 401) {
-                console.log('== Error');
+                console.log('Error deleting session');
             } else {
                 toast({
                     title: 'Logged Out',
@@ -53,8 +53,9 @@ const UserAvatar = () => {
 
                 router.push('/');
             }
-        }
-        logout();
+        };
+
+        deleteSession();
     };
 
     return (
