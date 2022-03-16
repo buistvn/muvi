@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- PROJECT -->
+# MUVI
 
-## Getting Started
+![Project Screenshot][project-screenshot]
 
-First, run the development server:
+MUVI is a web app for discovering movies using data provided by the TMDB API. Users can browse for movies by searching or filtering through categories such as Popular and Top Rated. Login for TMDB accounts is supported with third party authentication. Users that are logged in have access to managing their favorites and watchlist.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<!-- TECHNOLOGIES -->
+## Technologies
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* [Next.js](https://nextjs.org/)
+* [Chakra UI](https://chakra-ui.com/)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+<!-- INSTALLATION -->
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To set up a local copy of the project, follow these steps.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository
+   ```sh
+   git clone https://github.com/osu-cs499-w22/muvi.git
+   ```
+2. Install packages
+   ```sh
+   npm install
+   ```
+3. Generate an API key from [TMDB](https://developers.themoviedb.org/3/getting-started/introduction)
+4. Create a `.env.local` file in the root directory with the environment variables
+   ```sh
+   NEXT_PUBLIC_API_KEY="YOUR_API_KEY_GOES_HERE"
+   NEXT_PUBLIC_REDIRECT_URL="http://localhost:3000/login"
+   ```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<!-- USAGE -->
+## Usage
+
+To run the project, follow these steps.
+
+1. Run the development server
+  ```sh
+  npm run dev
+  ```
+2. Open http://localhost:3000/ with your browser
+
+
+
+<!-- AUTHORS -->
+## Authors
+
+CS 499 Final Project Team 25
+
+* [Steven Bui](https://github.com/buistvn)
+* [Alex Young](https://github.com/axyoung)
+
+
+
+<!-- LINKS & IMAGES -->
+[project-screenshot]: /docs/muvi.png
