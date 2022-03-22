@@ -3,7 +3,7 @@
 
 ![Project Screenshot][project-screenshot]
 
-MUVI is a web app for discovering movies using data provided by the TMDB API. Users can browse for movies by searching or filtering through categories such as Popular and Top Rated. Login for TMDB accounts is supported with third party authentication. Users that are logged in have access to managing their favorites and watchlist.
+MUVI is a web app for discovering movies using data provided by the [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction). Users can browse for movies by searching or filtering through categories such as Popular, Top Rated, and Now Playing. Login for TMDB accounts is supported with third party authentication. After logging in, users will have access to managing their favorites and watchlist.
 
 
 
@@ -46,7 +46,7 @@ To run the project, follow these steps.
   ```sh
   npm run dev
   ```
-2. Open http://localhost:3000/ with your browser
+2. Open http://localhost:3000/ in your browser
 
 
 
