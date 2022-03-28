@@ -22,7 +22,7 @@ To set up a local copy of the project, follow these steps.
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/osu-cs499-w22/muvi.git
+   git clone https://github.com/buistvn/muvi.git
    ```
 2. Install packages
    ```sh
